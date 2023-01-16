@@ -52,7 +52,7 @@ for (let i = 0; i < 3; i++) {
   const computerChoice = computerRandomSelection();
   const userInput = prompt("rock, paper, or scissors?... ");
   const verifiedInput = verifyUserInput(userInput);
-  const roundWinner = roundWinner(userInput, computerChoice);
+  const winner = roundWinner(userInput, computerChoice);
   let userCount = 0;
   let computerCount = 0;
   let totalCount = 0;
@@ -60,7 +60,7 @@ for (let i = 0; i < 3; i++) {
   if (verifiedInput) {
     console.log("user chooses " + userInput);
     console.log("computer chooses " + computerChoice);
-    if (roundWinner === 1) {
+    if (winner === 1) {
       userCount++;
       console.log("Player wins!");
       console.log(
@@ -70,7 +70,7 @@ for (let i = 0; i < 3; i++) {
           "Computer score: " +
           computerCount
       );
-    } else if (roundWinner === 2) {
+    } else if (winner === 2) {
       userCount++;
       computerCount++;
       console.log("draw!");
