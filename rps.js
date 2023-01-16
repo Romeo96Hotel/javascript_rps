@@ -8,14 +8,14 @@ for (let i = 0; i < 3; i++) {
   function computerRandomSelection() {
     let choices = ["rock", "paper", "scissors"];
     const random = choices[Math.floor(Math.random() * choices.length)];
-    console.log("computer chooses!... " + random);
+
     return random;
   }
 
   /* compares value of computer selection and user input to return who wins */
   function calculateWinner(computerSelection, userInput) {
-    this.computerSelection = toString(computerSelection);
-    this.userInput = toString(userInput);
+    this.computerSelection = computerSelection;
+    this.userInput = userInput;
     let computerScore = 0;
     let playerScore = 0;
     let totalScore =
@@ -24,22 +24,22 @@ for (let i = 0; i < 3; i++) {
       "//" +
       "Computer score: " +
       computerScore;
-      let winner;
+    let winner;
 
     if (computerSelection === "rock" && userInput === "scissors") {
-      computerScore++;
       computerSelection = winner;
-      console.log("You lose round " + totalScore);
+      return winner;
+      
     } else if (computerSelection === "paper" && userInput === "rock") {
-      computerScore++;
       computerSelection = winner;
-      console.log("You lose round " + totalScore);
+      return winner;
+      
     } else if (computerSelection === "scissors" && userInput === "paper") {
-      computerScore++;
       computerSelection = winner;
-      console.log("You lose round " + totalScore);
+      return winner;
+      
     } else {
-      console.log("Not a valid input");
+      
     }
   }
 
