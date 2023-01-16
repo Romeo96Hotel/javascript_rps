@@ -75,21 +75,13 @@ for (let i = 0; i < 3; i++) {
       computerCount++;
       console.log("draw!");
       console.log(
-        "Player score: " +
-          playerCount +
-          "/" +
-          "Computer score: " +
-          computerCount
+        "Player score: " + userCount + "/" + "Computer score: " + computerCount
       );
     } else {
       computerCount++;
       console.log("computer wins!");
       console.log(
-        "Player score: " +
-          playerCount +
-          "/" +
-          "Computer score: " +
-          computerCount
+        "Player score: " + userCount + "/" + "Computer score: " + computerCount
       );
     }
   } else {
