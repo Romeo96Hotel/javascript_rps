@@ -49,39 +49,26 @@ function computerRandomSelection() {
 /* calculates who won the round */
 function winnerOfRound() {}
 /* end functions */
+/* for loop */
+for (let i = 0; i < 3; i++) {
+  /* Rock paper scissors game */
+  const computerChoice = computerRandomSelection();
+  const userInput = prompt("rock, paper, or scissors?... ");
+  const verifiedInput = verifyUserInput(userInput);
+  const roundWinner = calculateWinner(userInput, computerChoice);
 
-/* Rock paper scissors game */
-const computerChoice = computerRandomSelection();
-const userInput = prompt("rock, paper, or scissors?... ");
-const verifiedInput = verifyUserInput(userInput);
-const roundWinner = calculateWinner(userInput, computerChoice);
+  if (verifiedInput) {
+    console.log("user chooses " + userInput);
+    console.log("computer chooses " + computerChoice);
 
-if (verifiedInput) {
-  console.log("user chooses " + userInput);
-  console.log("computer chooses " + computerChoice);
-
-  if (roundWinner === 1) {
-    console.log("Player wins!");
-  } else if (roundWinner === 2) {
-    console.log("draw!");
+    if (roundWinner === 1) {
+      console.log("Player wins!");
+    } else if (roundWinner === 2) {
+      console.log("draw!");
+    } else {
+      console.log("computer wins!");
+    }
   } else {
-    console.log("computer wins!");
+    console.log("user chooses " + userInput + " Invalid input");
   }
-} else {
-  console.log("user chooses " + userInput + " Invalid input");
 }
-
-/* if (verifyUserInput(userInput)) {
-  if ((winner = 1)) {
-    console.log(userInput);
-    console.log("You win");
-  } else if ((winner = 2)) {
-    console.log(userInput);
-    console.log("Draw!");
-  } else {
-    console.log(userInput);
-    console.log("Computer Wins!");
-  }
-} else {
-  console.log("Invalid entry");
-} */
