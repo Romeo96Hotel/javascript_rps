@@ -44,6 +44,14 @@ function computerRandomSelection() {
   const random = choices[Math.floor(Math.random() * choices.length)];
   return random;
 }
+/* increments the counter */
+function addToCount(currentValue) {
+  let currentCount = currentValue;
+
+  currentCount++;
+
+  return currentCount;
+}
 /* end functions */
 
 /* Rock paper scissors game */
@@ -54,6 +62,8 @@ for (let i = 0; i < 3; i++) {
   const verifiedInput = verifyUserInput(userInput);
   const winner = roundWinner(userInput, computerChoice);
   let userCount = 0;
+  let newUserCount;
+  let newComputerCount;
   let computerCount = 0;
   let totalCount = 0;
 
@@ -61,27 +71,35 @@ for (let i = 0; i < 3; i++) {
     console.log("user chooses " + userInput);
     console.log("computer chooses " + computerChoice);
     if (winner === 1) {
-      userCount++;
+      newUserCount = addToCount(userCount);
       console.log("Player wins!");
       console.log(
         "Player score: " +
-          playerCount +
+          newUserCount +
           "/" +
           "Computer score: " +
-          computerCount
+          newComputerCount
       );
     } else if (winner === 2) {
-      userCount++;
-      computerCount++;
+      newUserCount = addToCount(userCount);
+      newComputerCount = addToCount(computerCount);
       console.log("draw!");
       console.log(
-        "Player score: " + userCount + "/" + "Computer score: " + computerCount
+        "Player score: " +
+          newUserCount +
+          "/" +
+          "Computer score: " +
+          newComputerCount
       );
     } else {
-      computerCount++;
+      newComputerCount = addToCount(computerCount);
       console.log("computer wins!");
       console.log(
-        "Player score: " + userCount + "/" + "Computer score: " + computerCount
+        "Player score: " +
+          newUserCount +
+          "/" +
+          "Computer score: " +
+          newComputerCount
       );
     }
   } else {
