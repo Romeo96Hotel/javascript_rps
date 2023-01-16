@@ -1,8 +1,10 @@
-for (let i = 0; i < 4; i++) {
+const userInput = prompt("Welcome to Rock Paper Scissors");
+
+for (let i = 0; i < 3; i++) {
   /* loops 4 times */
 
   /* VARS */
-  const userInput = prompt("Welcome to Rock Paper Scissors");
+
   const computerSelection = computerRandomSelection();
   let computerScore = 0;
   let playerScore = 0;
@@ -13,8 +15,9 @@ for (let i = 0; i < 4; i++) {
 
   function computerRandomSelection() {
     const choices = ["rock", "paper", "scissors"];
-    let random;
+    const random = Math.floor(Math.random() * choices.length);
     return random;
+    console.log(random);
   }
 
   function calculateWinner(computerSelection, userInput) {
