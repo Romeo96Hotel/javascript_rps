@@ -33,10 +33,8 @@ class RpsGame {
     }
     return isValid;
   }
-}
-
-/* takes in both verified user input and computer input and returns who won */
-function calculateWinner(verifiedInput, computerRandomSelection) {
+  /* takes in both verified user input and computer input and returns who won */
+calculateWinner(verifiedInput, computerRandomSelection) {
   let userInput = verifiedInput;
   let computerInput = computerRandomSelection;
   let winner = 0;
@@ -54,6 +52,9 @@ function calculateWinner(verifiedInput, computerRandomSelection) {
   }
   return winner;
 }
+}
+
+
 
 /* calculates who won the round */
 function winnerOfRound() {} ///* end functions */
@@ -62,3 +63,6 @@ function winnerOfRound() {} ///* end functions */
 const userInput = prompt("rock, paper, or scissors?... ");
 const computerChoice = computerRandomSelection();
 const rps = new RpsGame(userInput, computerChoice);
+if(rps.isValid()) {
+  rps.
+}
