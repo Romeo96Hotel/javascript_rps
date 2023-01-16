@@ -1,42 +1,54 @@
-const userInput = prompt("Welcome to Rock Paper Scissors");
-
 for (let i = 0; i < 3; i++) {
+  /* takes user input */
+  const userInput = prompt("rock, paper, or scissors?... ");
   /* loops 4 times */
-
-  /* VARS */
-
-  const computerSelection = computerRandomSelection();
-  let computerScore = 0;
-  let playerScore = 0;
-  let totalScore =
-    "Player score: " + playerScore + "Computer score: " + computerScore;
 
   /* functions */
 
   function computerRandomSelection() {
-    const choices = ["rock", "paper", "scissors"];
-    const random = Math.floor(Math.random() * choices.length);
+    let choices = ["rock", "paper", "scissors"];
+    const random = choices[Math.floor(Math.random() * choices.length)];
+    console.log("computer chooses!... " + random);
     return random;
-    console.log(random);
   }
 
+  /* compares value of computer selection and user input to return who wins */
   function calculateWinner(computerSelection, userInput) {
     this.computerSelection = toString(computerSelection);
     this.userInput = toString(userInput);
+    let computerScore = 0;
+    let playerScore = 0;
+    let totalScore =
+      "Player score: " +
+      playerScore +
+      "//" +
+      "Computer score: " +
+      computerScore;
+      let winner;
 
     if (computerSelection === "rock" && userInput === "scissors") {
       computerScore++;
-      console.log("You lose round" + totalScore);
+      computerSelection = winner;
+      console.log("You lose round " + totalScore);
     } else if (computerSelection === "paper" && userInput === "rock") {
       computerScore++;
-      console.log("You lose round" + totalScore);
+      computerSelection = winner;
+      console.log("You lose round " + totalScore);
     } else if (computerSelection === "scissors" && userInput === "paper") {
       computerScore++;
-      console.log("You lose round" + totalScore);
+      computerSelection = winner;
+      console.log("You lose round " + totalScore);
     } else {
       console.log("Not a valid input");
     }
   }
+
   /* end functions */
+
+  const computerSelection = computerRandomSelection();
+
+  console.log(computerSelection);
+
+  console.log(calculateWinner(computerRandomSelection(), userInput));
 }
 /* end for loop */
