@@ -19,9 +19,9 @@ function verifyUserInput(userInput) {
   return isValid;
 }
 /* takes in both verified user input and computer input and returns who won */
-function calculateWinner(verifiedInput, computerRandomSelection) {
-  let userInput = verifiedInput;
-  let computerInput = computerRandomSelection;
+function roundWinner(verifiedInput, computerRandomSelection) {
+  const userInput = verifiedInput;
+  const computerInput = computerRandomSelection;
   let winner;
 
   if (userInput === "rock" && computerInput === "scissors") {
@@ -52,17 +52,45 @@ for (let i = 0; i < 3; i++) {
   const computerChoice = computerRandomSelection();
   const userInput = prompt("rock, paper, or scissors?... ");
   const verifiedInput = verifyUserInput(userInput);
-  const roundWinner = calculateWinner(userInput, computerChoice);
+  const roundWinner = roundWinner(userInput, computerChoice);
+  let userCount = 0;
+  let computerCount = 0;
+  let totalCount = 0;
 
   if (verifiedInput) {
     console.log("user chooses " + userInput);
     console.log("computer chooses " + computerChoice);
     if (roundWinner === 1) {
+      userCount++;
       console.log("Player wins!");
+      console.log(
+        "Player score: " +
+          playerCount +
+          "/" +
+          "Computer score: " +
+          computerCount
+      );
     } else if (roundWinner === 2) {
+      userCount++;
+      computerCount++;
       console.log("draw!");
+      console.log(
+        "Player score: " +
+          playerCount +
+          "/" +
+          "Computer score: " +
+          computerCount
+      );
     } else {
+      computerCount++;
       console.log("computer wins!");
+      console.log(
+        "Player score: " +
+          playerCount +
+          "/" +
+          "Computer score: " +
+          computerCount
+      );
     }
   } else {
     console.log("user chooses " + userInput + " Invalid input");
