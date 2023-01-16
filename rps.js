@@ -1,6 +1,6 @@
 /* checks if user input is valid*/
 function verifyUserInput(userInput) {
-  userchoice = userInput;
+  userchoice = userInput.toLowerCase();
 
   switch (userchoice) {
     case "rock":
