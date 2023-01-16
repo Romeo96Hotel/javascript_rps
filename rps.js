@@ -1,19 +1,17 @@
 /* checks if user input is valid*/
 function verifyUserInput(userInput) {
   userchoice = userInput;
+
   switch (userchoice) {
     case "rock":
       isValid = true;
       break;
-
     case "scissors":
       isValid = true;
       break;
-
     case "paper":
       isValid = true;
       break;
-
     default:
       isValid = false;
       break;
@@ -39,19 +37,18 @@ function calculateWinner(verifiedInput, computerRandomSelection) {
   }
   return winner;
 }
+
 /* returns value of random index in array */
 function computerRandomSelection() {
   const choices = ["rock", "paper", "scissors"];
   const random = choices[Math.floor(Math.random() * choices.length)];
   return random;
 }
-
-/* calculates who won the round */
-function winnerOfRound() {}
 /* end functions */
-/* for loop */
+
+/* Rock paper scissors game */
+/* runs game 3 times */
 for (let i = 0; i < 3; i++) {
-  /* Rock paper scissors game */
   const computerChoice = computerRandomSelection();
   const userInput = prompt("rock, paper, or scissors?... ");
   const verifiedInput = verifyUserInput(userInput);
@@ -60,7 +57,6 @@ for (let i = 0; i < 3; i++) {
   if (verifiedInput) {
     console.log("user chooses " + userInput);
     console.log("computer chooses " + computerChoice);
-
     if (roundWinner === 1) {
       console.log("Player wins!");
     } else if (roundWinner === 2) {
