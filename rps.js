@@ -1,5 +1,5 @@
 /* functions */
-
+/* gets value of random index inside of array */
 function computerRandomSelection() {
   let choices = ["rock", "paper", "scissors"];
   const random = choices[Math.floor(Math.random() * choices.length)];
@@ -9,7 +9,8 @@ function computerRandomSelection() {
 
 /* checks if user input is valid*/
 function verifyInput(userInput) {
-  const longHairDontCare = userInput.toLowerCase(); //ignores case sensitivity if user input
+  //ignores case sensitivity if user input
+  const longHairDontCare = userInput.toLowerCase();
   let isValid;
 
   switch (longHairDontCare) {
@@ -52,7 +53,6 @@ function calculateWinner(verifiedInput, computerRandomSelection) {
 
 /* calculates who won the round */
 function winnerOfRound(userInput, computerInput) {}
-
 /* end functions */
 
 /* Rock paper scissors game */
@@ -62,6 +62,11 @@ const isValid = verifyInput(userInput);
 
 if (userInput.isValid) {
   calculateWinner(userInput, computerChoice);
+  if ((calculateWinner = true)) {
+    console.log("You win!");
+  } else {
+    console.log("You lose... computer wins!");
+  }
 } else {
   console.log("invalid input");
 }
