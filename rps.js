@@ -1,29 +1,30 @@
 /* checks if user input is valid*/
-  function verifyInput() {
-    switch (this.userInput) {
-      case "rock":
-        isValid = true;
-        break;
+function verifyUserInput(userInput) {
+  userchoice = userInput;
+  switch (userchoice) {
+    case "rock":
+      isValid = true;
+      break;
 
-      case "scissors":
-        isValid = true;
-        break;
+    case "scissors":
+      isValid = true;
+      break;
 
-      case "paper":
-        isValid = true;
-        break;
+    case "paper":
+      isValid = true;
+      break;
 
-      default:
-        isValid = false;
-        break;
-    }
-    return isValid;
+    default:
+      isValid = false;
+      break;
   }
-  /* takes in both verified user input and computer input and returns who won */
-  function calculateWinner(verifiedInput, computerRandomSelection) {
+  return isValid;
+}
+/* takes in both verified user input and computer input and returns who won */
+function calculateWinner(verifiedInput, computerRandomSelection) {
   let userInput = verifiedInput;
   let computerInput = computerRandomSelection;
-  let winner = 0;
+  let winner;
 
   if (userInput === "rock" && computerInput === "scissors") {
     winner = 1;
@@ -38,30 +39,49 @@
   }
   return winner;
 }
-  /* returns value of random index in array */
-  function computerRandomSelection() {
-    const choices = ["rock", "paper", "scissors"];
-    const random = choices[Math.floor(Math.random() * choices.length)];
-    return random;
-  }
+/* returns value of random index in array */
+function computerRandomSelection() {
+  const choices = ["rock", "paper", "scissors"];
+  const random = choices[Math.floor(Math.random() * choices.length)];
+  return random;
+}
 
 /* calculates who won the round */
 function winnerOfRound() {}
+/* end functions */
 
 /* Rock paper scissors game */
 const computerChoice = computerRandomSelection();
 const userInput = prompt("rock, paper, or scissors?... ");
-const rps = new RpsGame(userInput, computerChoice);
-if(RpsGame.verifyInput() = true) {
+const verifiedInput = verifyUserInput(userInput);
+const roundWinner = calculateWinner(userInput, computerChoice);
 
-  if(calculateWinner() = 1 ) {
+if (verifiedInput) {
+  console.log("user chooses " + userInput);
+  console.log("computer chooses " + computerChoice);
+
+  if (roundWinner === 1) {
+    console.log("Player wins!");
+  } else if (roundWinner === 2) {
+    console.log("draw!");
+  } else {
+    console.log("computer wins!");
+  }
+} else {
+  console.log("user chooses " + userInput + " Invalid input");
+}
+
+/* if (verifyUserInput(userInput)) {
+  if ((winner = 1)) {
+    console.log(userInput);
     console.log("You win");
-  } else if(rps.calculateWinner() = 2) {
+  } else if ((winner = 2)) {
+    console.log(userInput);
     console.log("Draw!");
   } else {
+    console.log(userInput);
     console.log("Computer Wins!");
   }
-
 } else {
   console.log("Invalid entry");
-}
+} */
