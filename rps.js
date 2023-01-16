@@ -3,7 +3,6 @@
 function computerRandomSelection() {
   let choices = ["rock", "paper", "scissors"];
   const random = choices[Math.floor(Math.random() * choices.length)];
-
   return random;
 }
 
@@ -53,6 +52,7 @@ function calculateWinner(verifiedInput, computerRandomSelection) {
 
 /* calculates who won the round */
 function winnerOfRound(userInput, computerInput) {}
+
 /* end functions */
 
 /* Rock paper scissors game */
@@ -60,7 +60,7 @@ const userInput = prompt("rock, paper, or scissors?... ");
 const computerChoice = computerRandomSelection();
 const isValid = verifyInput(userInput);
 
-if (userInput.isValid) {
+if (isValid) {
   calculateWinner(userInput, computerChoice);
   if ((calculateWinner = true)) {
     console.log("You win!");
