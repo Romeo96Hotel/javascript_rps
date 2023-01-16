@@ -1,7 +1,15 @@
-/* functions */
+/* rps class */
+class RpsGame {
+  constructor(userInput, computerInput) {
+    this.userInput = userInput;
+    this.computerInput = computerInput;
+  }
+  
+}
+
 /* gets value of random index inside of array */
 function computerRandomSelection() {
-  let choices = ["rock", "paper", "scissors"];
+  const choices = ["rock", "paper", "scissors"];
   const random = choices[Math.floor(Math.random() * choices.length)];
   return random;
 }
@@ -36,39 +44,28 @@ function verifyInput(userInput) {
 function calculateWinner(verifiedInput, computerRandomSelection) {
   let userInput = verifiedInput;
   let computerInput = computerRandomSelection;
-  let winner;
+  let winner = 0;
 
   if (userInput === "rock" && computerInput === "scissors") {
-    winner = true;
+    winner = 1;
   } else if (userInput === "paper" && computerInput === "rock") {
-    winner = true;
+    winner = 1;
   } else if (userInput === "scissors" && computerInput === "paper") {
-    winner = true;
+    winner = 1;
+  } else if (userInput === computerInput) {
+    winner = 3;
   } else {
-    winner = false;
+    winner = 2;
   }
   return winner;
 }
 
 /* calculates who won the round */
-function winnerOfRound(userInput, computerInput) {}
+function winnerOfRound() {}
 
 /* end functions */
 
 /* Rock paper scissors game */
-const userInput = prompt("rock, paper, or scissors?... ");
-const computerChoice = computerRandomSelection();
-const isValid = verifyInput(userInput);
-
-if (isValid) {
-  calculateWinner(userInput, computerChoice);
-  if ((calculateWinner = true)) {
-    console.log("You win!");
-  } else {
-    console.log("You lose... computer wins!");
-  }
-} else {
-  console.log("invalid input");
-}
-
-/* end rock paper scissors game */
+const rps = new RpsGame();
+const userInput = rps.userInput;
+console.log(userinput);
