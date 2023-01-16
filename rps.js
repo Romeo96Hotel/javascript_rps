@@ -112,7 +112,7 @@ if (computerCount > userCount) {
   console.log("Computer wins the game!");
 } else if (user > computerCount) {
   console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("Computer wins the game!");
+  console.log("User wins the game!");
 } else {
   console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   console.log("Draw! both players win... NOTHING!");
