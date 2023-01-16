@@ -5,12 +5,7 @@ class RpsGame {
     this.computerInput = computerInput;
   }
 
-  /* returns value of random index in array */
-  computerRandomSelection() {
-    const choices = ["rock", "paper", "scissors"];
-    const random = choices[Math.floor(Math.random() * choices.length)];
-    return random;
-  }
+
 
   /* checks if user input is valid*/
   verifyInput() {
@@ -53,15 +48,19 @@ calculateWinner(verifiedInput, computerRandomSelection) {
   return winner;
 }
 }
-
-
+  /* returns value of random index in array */
+  function computerRandomSelection() {
+    const choices = ["rock", "paper", "scissors"];
+    const random = choices[Math.floor(Math.random() * choices.length)];
+    return random;
+  }
 
 /* calculates who won the round */
-function winnerOfRound() {} ///* end functions */
+function winnerOfRound() {}
 
 /* Rock paper scissors game */
-const userInput = prompt("rock, paper, or scissors?... ");
 const computerChoice = computerRandomSelection();
+const userInput = prompt("rock, paper, or scissors?... ");
 const rps = new RpsGame(userInput, computerChoice);
 if(rps.isValid() = true) {
 
@@ -72,7 +71,7 @@ if(rps.isValid() = true) {
   } else {
     console.log("Computer Wins!");
   }
-  
+
 } else {
   console.log("Invalid entry");
 }
