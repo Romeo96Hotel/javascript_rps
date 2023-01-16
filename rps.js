@@ -18,7 +18,7 @@ function verifyUserInput(userInput) {
   }
   return isValid;
 }
-/* takes in both verified user input and computer input and returns who won */
+/* takes in both verified user input and computer input and returns respective number value for round winner */
 function roundWinner(verifiedInput, computerRandomSelection) {
   const userInput = verifiedInput;
   const computerInput = computerRandomSelection;
@@ -59,11 +59,11 @@ function setScore(score) {
 /* end functions */
 
 /* Rock paper scissors game */
+
 let userCount = 0;
 let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
-let totalCount = 0;
 
 /* runs game 3 times */
 for (let i = 0; i < 5; i++) {
