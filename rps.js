@@ -63,6 +63,7 @@ let userCount = 0;
 let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
+let totalCount = 0;
 
 /* runs game 3 times */
 for (let i = 0; i < 3; i++) {
@@ -71,22 +72,25 @@ for (let i = 0; i < 3; i++) {
   const verifiedInput = verifyUserInput(userInput);
   const winner = roundWinner(userInput, computerChoice);
 
-  let totalCount;
-
+  /* if input is valid */
   if (verifiedInput) {
     console.log("user chooses " + userInput);
     console.log("computer chooses " + computerChoice);
+    /* if player wins */
     if (winner === 1) {
       newUserCount = addToCount(userCount);
       console.log("Player wins!");
+      /* if its a draw */
     } else if (winner === 2) {
       newUserCount = addToCount(userCount);
       newComputerCount = addToCount(computerCount);
       console.log("draw!");
+      /* computer wins */
     } else {
       newComputerCount = addToCount(computerCount);
       console.log("computer wins!");
     }
+    /* if input is not valid */
   } else {
     console.log("user chooses " + userInput + " Invalid input");
   }
@@ -98,8 +102,7 @@ for (let i = 0; i < 3; i++) {
       "Computer score: " +
       newComputerCount
   );
-
+  /* set starting counts to the new count's value*/
   userCount = newUserCount;
-
   computerCount = newComputerCount;
 }
