@@ -34,11 +34,19 @@ function verifyInput(userInput) {
 
 /* takes in both verified user input and computer input and returns who won */
 function calculateWinner(verifiedInput, computerRandomSelection) {
-  this.verifiedInput = verifiedInput;
-  this.computerRandomSelection = computerRandomSelection;
-
+  let userInput = verifiedInput;
+  let computerInput = computerRandomSelection;
   let winner;
 
+  if (userInput === "rock" && computerInput === "scissors") {
+    winner = true;
+  } else if (userInput === "paper" && computerInput === "rock") {
+    winner = true;
+  } else if (userInput === "scissors" && computerInput === "paper") {
+    winner = true;
+  } else {
+    winner = false;
+  }
   return winner;
 }
 
@@ -52,11 +60,10 @@ const userInput = prompt("rock, paper, or scissors?... ");
 const computerChoice = computerRandomSelection();
 const isValid = verifyInput(userInput);
 
-if (userInput.isValid()) {
+if (userInput.isValid) {
   calculateWinner(userInput, computerChoice);
 } else {
   console.log("invalid input");
 }
-const calculatedWinner = calculateWinner(validInput, computerChoice);
 
 /* end rock paper scissors game */
