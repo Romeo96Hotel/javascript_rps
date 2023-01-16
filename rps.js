@@ -5,6 +5,13 @@ class RpsGame {
     this.computerInput = computerInput;
   }
 
+  /* returns value of random index in array */
+  computerRandomSelection() {
+    const choices = ["rock", "paper", "scissors"];
+    const random = choices[Math.floor(Math.random() * choices.length)];
+    return random;
+  }
+
   /* checks if user input is valid*/
   verifyInput() {
     switch (this.userInput) {
@@ -26,13 +33,6 @@ class RpsGame {
     }
     return isValid;
   }
-}
-
-function computerRandomSelection() {
-  ///* gets value of random index inside of array */
-  const choices = ["rock", "paper", "scissors"];
-  const random = choices[Math.floor(Math.random() * choices.length)];
-  return random;
 }
 
 /* takes in both verified user input and computer input and returns who won */
@@ -62,4 +62,3 @@ function winnerOfRound() {} ///* end functions */
 const userInput = prompt("rock, paper, or scissors?... ");
 const computerChoice = computerRandomSelection();
 const rps = new RpsGame(userInput, computerChoice);
-if (rps.verifyInput) calculateWinner(rps.userInput);
