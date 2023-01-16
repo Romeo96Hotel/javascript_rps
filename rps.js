@@ -1,14 +1,5 @@
-/* rps class */
-class RpsGame {
-  constructor(userInput, computerInput) {
-    this.userInput = userInput;
-    this.computerInput = computerInput;
-  }
-
-
-
-  /* checks if user input is valid*/
-  verifyInput() {
+/* checks if user input is valid*/
+  function verifyInput() {
     switch (this.userInput) {
       case "rock":
         isValid = true;
@@ -29,7 +20,7 @@ class RpsGame {
     return isValid;
   }
   /* takes in both verified user input and computer input and returns who won */
-calculateWinner(verifiedInput, computerRandomSelection) {
+  function calculateWinner(verifiedInput, computerRandomSelection) {
   let userInput = verifiedInput;
   let computerInput = computerRandomSelection;
   let winner = 0;
@@ -47,7 +38,6 @@ calculateWinner(verifiedInput, computerRandomSelection) {
   }
   return winner;
 }
-}
   /* returns value of random index in array */
   function computerRandomSelection() {
     const choices = ["rock", "paper", "scissors"];
@@ -62,8 +52,7 @@ function winnerOfRound() {}
 const computerChoice = computerRandomSelection();
 const userInput = prompt("rock, paper, or scissors?... ");
 const rps = new RpsGame(userInput, computerChoice);
-const whoWins
-if(rps.isValid = true) {
+if(RpsGame.verifyInput() = true) {
 
   if(calculateWinner() = 1 ) {
     console.log("You win");
