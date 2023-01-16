@@ -110,7 +110,7 @@ for (let i = 0; i < 5; i++) {
 if (computerCount > userCount) {
   console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   console.log("Computer wins the game!");
-} else if (user > computerCount) {
+} else if (userCountrock > computerCount) {
   console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   console.log("User wins the game!");
 } else {
