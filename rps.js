@@ -66,7 +66,7 @@ let computerCount = 0;
 let totalCount = 0;
 
 /* runs game 3 times */
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 5; i++) {
   const computerChoice = computerRandomSelection();
   const userInput = prompt("rock, paper, or scissors?... ");
   const verifiedInput = verifyUserInput(userInput);
@@ -105,4 +105,15 @@ for (let i = 0; i < 3; i++) {
   /* set starting counts to the new count's value*/
   userCount = newUserCount;
   computerCount = newComputerCount;
+}
+
+if (computerCount > userCount) {
+  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  console.log("Computer wins the game!");
+} else if (user > computerCount) {
+  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  console.log("Computer wins the game!");
+} else {
+  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+  console.log("Draw! both players win... NOTHING!");
 }
