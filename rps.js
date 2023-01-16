@@ -52,20 +52,26 @@ function addToCount(currentValue) {
 
   return currentCount;
 }
+
+function setScore(score) {
+  newScore = score++;
+}
 /* end functions */
 
 /* Rock paper scissors game */
+let userCount = 0;
+let newUserCount = 0;
+let newComputerCount = 0;
+let computerCount = 0;
+
 /* runs game 3 times */
 for (let i = 0; i < 3; i++) {
   const computerChoice = computerRandomSelection();
   const userInput = prompt("rock, paper, or scissors?... ");
   const verifiedInput = verifyUserInput(userInput);
   const winner = roundWinner(userInput, computerChoice);
-  let userCount = 0;
-  let newUserCount;
-  let newComputerCount;
-  let computerCount = 0;
-  let totalCount = 0;
+
+  let totalCount;
 
   if (verifiedInput) {
     console.log("user chooses " + userInput);
@@ -73,36 +79,27 @@ for (let i = 0; i < 3; i++) {
     if (winner === 1) {
       newUserCount = addToCount(userCount);
       console.log("Player wins!");
-      console.log(
-        "Player score: " +
-          newUserCount +
-          "/" +
-          "Computer score: " +
-          newComputerCount
-      );
     } else if (winner === 2) {
       newUserCount = addToCount(userCount);
       newComputerCount = addToCount(computerCount);
       console.log("draw!");
-      console.log(
-        "Player score: " +
-          newUserCount +
-          "/" +
-          "Computer score: " +
-          newComputerCount
-      );
     } else {
       newComputerCount = addToCount(computerCount);
       console.log("computer wins!");
-      console.log(
-        "Player score: " +
-          newUserCount +
-          "/" +
-          "Computer score: " +
-          newComputerCount
-      );
     }
   } else {
     console.log("user chooses " + userInput + " Invalid input");
   }
+
+  console.log(
+    "Player score: " +
+      newUserCount +
+      " / " +
+      "Computer score: " +
+      newComputerCount
+  );
+
+  userCount = newUserCount;
+
+  computerCount = newComputerCount;
 }
