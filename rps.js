@@ -63,6 +63,16 @@ function winnerOfRound() {} ///* end functions */
 const userInput = prompt("rock, paper, or scissors?... ");
 const computerChoice = computerRandomSelection();
 const rps = new RpsGame(userInput, computerChoice);
-if(rps.isValid()) {
-  rps.
+if(rps.isValid() = true) {
+
+  if(rps.calculateWinner() = 1 ) {
+    console.log("You win");
+  } else if(rps.calculateWinner() = 2) {
+    console.log("Draw!");
+  } else {
+    console.log("Computer Wins!");
+  }
+  
+} else {
+  console.log("Invalid entry");
 }
