@@ -13,42 +13,32 @@ for (let i = 0; i < 3; i++) {
   }
 
   /* compares value of computer selection and user input to return who wins */
-  function calculateWinner(computerSelection, userInput) {
-    this.computerSelection = computerSelection;
-    this.userInput = userInput;
-    let computerScore = 0;
-    let playerScore = 0;
-    let totalScore =
-      "Player score: " +
-      playerScore +
-      "//" +
-      "Computer score: " +
-      computerScore;
-    let winner;
+  function verifyInput(userInput) {
+    const longHairDontCare = userInput.toLowerCase();
+    let isValid;
 
-    if (computerSelection === "rock" && userInput === "scissors") {
-      computerSelection = winner;
-      return winner;
-      
-    } else if (computerSelection === "paper" && userInput === "rock") {
-      computerSelection = winner;
-      return winner;
-      
-    } else if (computerSelection === "scissors" && userInput === "paper") {
-      computerSelection = winner;
-      return winner;
-      
-    } else {
-      
+    switch (isValid) {
+      case "rock":
+        isValid = true;
+        break;
+
+      case "scissors":
+        isValid = true;
+        break;
+
+      case "paper":
+        isValid = true;
+        break;
+
+      default:
+        isValid = false;
+        break;
     }
+    return isValid;
   }
 
   /* end functions */
 
-  const computerSelection = computerRandomSelection();
-
-  console.log(computerSelection);
-
-  console.log(calculateWinner(computerRandomSelection(), userInput));
+  /* Rock paper scissors game */
 }
 /* end for loop */
