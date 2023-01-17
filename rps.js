@@ -102,11 +102,12 @@ for (let i = 0; i < 5; i++) {
       "Computer score: " +
       newComputerCount
   );
-  /* set starting counts to the new count's value*/
+  /* set starting counts to the new count's value for new round*/
   userCount = newUserCount;
   computerCount = newComputerCount;
 }
 
+/* compares computer score to user score at the end of the game */
 if (computerCount > userCount) {
   console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   console.log("Computer wins the game!");
