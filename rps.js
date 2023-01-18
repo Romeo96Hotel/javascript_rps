@@ -90,7 +90,7 @@ for (let i = 0; i < 5; i++) {
       newComputerCount = addToCount(computerCount);
       console.log("computer wins!");
     }
-    /* if input is not valid */
+    /* if input is not valid.. */
   } else {
     console.log("user chooses " + userInput + " Invalid input");
   }
