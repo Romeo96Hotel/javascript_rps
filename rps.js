@@ -35,7 +35,6 @@ let userCount = 0;
 let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
-const winner = roundWinner(userInput, computerChoice);
 
 const display = document.querySelector("#display");
 const computerChoice = computerRandomSelection();
