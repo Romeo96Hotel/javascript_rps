@@ -2,12 +2,6 @@ let userCount = 0;
 let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
-
-const userInput = prompt("rock, paper, or scissors?... ");
-
-const winner = roundWinner(userInput, computerChoice);
-const display = document.querySelector("#display");
-
 /* checks if user input is valid*/
 function returnUserChoice(userInput) {
   userChoice = button.forEach(button) =>{
