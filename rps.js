@@ -2,28 +2,14 @@ let userCount = 0;
 let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
-/* checks if user input is valid*/
-function returnUserChoice(userInput) {
-  userChoice = button.forEach(button) =>{
-    console.log("ff");
-  }
 
-  switch (userchoice) {
-    case "rock":
-      isValid = true;
-      break;
-    case "scissors":
-      isValid = true;
-      break;
-    case "paper":
-      isValid = true;
-      break;
-    default:
-      isValid = false;
-      break;
-  }
-  return isValid;
+/* returns value of random index in array */
+function computerRandomSelection() {
+  const choices = ["rock", "paper", "scissors"];
+  const random = choices[Math.floor(Math.random() * choices.length)];
+  return random;
 }
+
 /* takes in both verified user input and computer input and returns respective number value for round winner */
 function roundWinner(verifiedInput, computerRandomSelection) {
   const userInput = verifiedInput;
@@ -44,12 +30,14 @@ function roundWinner(verifiedInput, computerRandomSelection) {
   return winner;
 }
 
-/* returns value of random index in array */
-function computerRandomSelection() {
-  const choices = ["rock", "paper", "scissors"];
-  const random = choices[Math.floor(Math.random() * choices.length)];
-  return random;
+/* takes user input and computer input and updates the display accordingly */
+function updateDisplay(input1, input2) {
+  const verifiedInput = verifyUserInput(userInput);
+  const computerChoice = computerRandomSelection();
+  verifiedInput = input1;
+  computerChoice = input2;
 }
+
 /* increments the counter */
 function addToCount(currentValue) {
   let currentCount = currentValue;
@@ -59,15 +47,9 @@ function addToCount(currentValue) {
   return currentCount;
 }
 
+/* sets new score */
 function setScore(score) {
   newScore = score++;
-}
-
-function updateDisplay(input1, input2) {
-  const verifiedInput = verifyUserInput(userInput);
-  const computerChoice = computerRandomSelection();
-  verifiedInput = input1;
-  computerChoice = input2;
 }
 /* end functions */
 
@@ -76,48 +58,8 @@ function updateDisplay(input1, input2) {
 
 
 
-/* if input is valid */
-if (verifiedInput) {
-  console.log("user chooses " + userInput);
-  console.log("computer chooses " + computerChoice);
-  /* if player wins */
-  if (winner === 1) {
-    newUserCount = addToCount(userCount);
-    console.log("Player wins!");
-    /* if its a draw */
-  } else if (winner === 2) {
-    newUserCount = addToCount(userCount);
-    newComputerCount = addToCount(computerCount);
-    console.log("draw!");
-    /* computer wins */
-  } else {
-    newComputerCount = addToCount(computerCount);
-    console.log("computer wins!");
-  }
-  /* if input is not valid.. */
-} else {
-  console.log("user chooses " + userInput + " Invalid input");
-}
-
-console.log(
-  "Player score: " +
-    newUserCount +
-    " / " +
-    "Computer score: " +
-    newComputerCount
-);
 /* set starting counts to the new count's value for new round*/
-userCount = newUserCount;
-computerCount = newComputerCount;
+
 
 /* compares computer score to user score at the end of the game */
-if (computerCount > userCount) {
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("Computer wins the game!");
-} else if (userCount > computerCount) {
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("User wins the game!");
-} else {
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("Draw! both players win... NOTHING!");
-}
+
