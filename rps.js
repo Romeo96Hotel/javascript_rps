@@ -31,3 +31,4 @@ let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
 
+const display = document.querySelector("#display");
