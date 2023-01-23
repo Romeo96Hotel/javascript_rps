@@ -4,6 +4,7 @@ function computerRandomSelection() {
   const random = choices[Math.floor(Math.random() * choices.length)];
   return random;
 }
+
 /* increments the counter */
 function addToCount(currentValue) {
   let currentCount = currentValue;
@@ -12,10 +13,20 @@ function addToCount(currentValue) {
 
   return currentCount;
 }
-
+/* sets new score after each game */
 function setScore(score) {
   newScore = score++;
 }
+
+/* appends input taken from user to the display div */
+function appendUserInput(text) {
+  display.appendChild(text);
+}
+
+function appendComputerInput(text) {
+  display.appendChild(text);
+}
+
 /* end functions */
 
 /* Rock paper scissors game */
@@ -24,57 +35,18 @@ let userCount = 0;
 let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
+const winner = roundWinner(userInput, computerChoice);
 
-/* runs game 3 times */
-for (let i = 0; i < 5; i++) {
-  const computerChoice = computerRandomSelection();
-  const userInput = prompt("rock, paper, or scissors?... ");
-  const verifiedInput = verifyUserInput(userInput);
-  const winner = roundWinner(userInput, computerChoice);
+const display = document.querySelector("#display");
+const computerChoice = computerRandomSelection();
+let userInput;
+const button = document.querySelectorAll("button");
 
-  /* if input is valid */
-  if (verifiedInput) {
-    console.log("user chooses " + userInput);
-    console.log("computer chooses " + computerChoice);
-    /* if player wins */
-    if (winner === 1) {
-      newUserCount = addToCount(userCount);
-      console.log("Player wins!");
-      /* if its a draw */
-    } else if (winner === 2) {
-      newUserCount = addToCount(userCount);
-      newComputerCount = addToCount(computerCount);
-      console.log("draw!");
-      /* computer wins */
-    } else {
-      newComputerCount = addToCount(computerCount);
-      console.log("computer wins!");
-    }
-    /* if input is not valid */
-  } else {
-    console.log("user chooses " + userInput + " Invalid input");
-  }
+button.forEach((button) => {
+  button.addEventListener("click", () => {
+    userInput = button.id;
+    return userInput;
+  });
+});
 
-  console.log(
-    "Player score: " +
-      newUserCount +
-      " / " +
-      "Computer score: " +
-      newComputerCount
-  );
-  /* set starting counts to the new count's value for new round*/
-  userCount = newUserCount;
-  computerCount = newComputerCount;
-}
-
-/* compares computer score to user score at the end of the game */
-if (computerCount > userCount) {
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("Computer wins the game!");
-} else if (userCount > computerCount) {
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("User wins the game!");
-} else {
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("Draw! both players win... NOTHING!");
-}
+appendUserInput(userInput);
