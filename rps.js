@@ -1,23 +1,24 @@
 /* returns value of random index in array */
-function computerRandomSelection() {
+const computerInput = function() {
   const choices = ["rock", "paper", "scissors"];
   const random = choices[Math.floor(Math.random() * choices.length)];
   return random;
 }
 
 /* returns user input */
-function getUserInput() {}
+const userInput = function() {}
 
 /* increments the counter */
-function addToCount(currentValue) {
+const updateCount = function(currentValue) {
   let currentCount = currentValue;
   currentCount++;
   return currentCount;
 }
 
 /* sets new score after each game */
-function setScore(score) {
+const updateScore = function(score) {
   newScore = score++;
+  return newScore;
 }
 
 /* appends input taken from user to the display div */
