@@ -6,8 +6,14 @@ function computerChoice() {
 }
 
 /* returns user input */
-function getUserinput(input) {
-  const userInput = input;
+function Userinput() {
+  const button = document.querySelectorAll("button");
+
+  button.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      return button.innerHTML;
+    });
+  });
 }
 
 /* sets new score after each game */
@@ -24,3 +30,4 @@ let userCount = 0;
 let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
+
