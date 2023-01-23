@@ -1,6 +1,18 @@
+let userCount = 0;
+let newUserCount = 0;
+let newComputerCount = 0;
+let computerCount = 0;
+
+const userInput = prompt("rock, paper, or scissors?... ");
+
+const winner = roundWinner(userInput, computerChoice);
+const display = document.querySelector("#display");
+
 /* checks if user input is valid*/
-function verifyUserInput(userInput) {
-  userchoice = userInput.toLowerCase();
+function returnUserChoice(userInput) {
+  userChoice = button.forEach(button) =>{
+    console.log("ff");
+  }
 
   switch (userchoice) {
     case "rock":
@@ -56,25 +68,22 @@ function addToCount(currentValue) {
 function setScore(score) {
   newScore = score++;
 }
+
+function updateDisplay(input1, input2) {
+  const verifiedInput = verifyUserInput(userInput);
+  const computerChoice = computerRandomSelection();
+  verifiedInput = input1;
+  computerChoice = input2;
+}
 /* end functions */
 
 /* Rock paper scissors game */
 
-let userCount = 0;
-let newUserCount = 0;
-let newComputerCount = 0;
-let computerCount = 0;
-const computerChoice = computerRandomSelection();
-const userInput = prompt("rock, paper, or scissors?... ");
-const verifiedInput = verifyUserInput(userInput);
-const winner = roundWinner(userInput, computerChoice);
-const display = document.querySelector("#display");
+
 
 
 /* if input is valid */
 if (verifiedInput) {
-  display.append(userInput);
-
   console.log("user chooses " + userInput);
   console.log("computer chooses " + computerChoice);
   /* if player wins */
