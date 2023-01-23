@@ -26,7 +26,9 @@ function roundWinner(verifiedInput, computerRandomSelection) {
 }
 
 /* takes user input and computer input and updates the display accordingly */
-function updateDisplay(input1, input2) {}
+function appendDisplay(input1, input2) {
+
+}
 
 /* increments the counter */
 function addToCount(currentValue) {
@@ -50,6 +52,9 @@ let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
 let userInput;
+let computerInput;
+const display = document.querySelector("#display");
+const button = document.querySelectorAll("button")
 
 /* set starting counts to the new count's value for new round*/
 
