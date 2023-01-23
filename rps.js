@@ -5,12 +5,13 @@ function computerRandomSelection() {
   return random;
 }
 
+/* returns user input */
+function getUserInput() {}
+
 /* increments the counter */
 function addToCount(currentValue) {
   let currentCount = currentValue;
-
   currentCount++;
-
   return currentCount;
 }
 /* sets new score after each game */
@@ -20,11 +21,15 @@ function setScore(score) {
 
 /* appends input taken from user to the display div */
 function appendUserInput(text) {
-  display.appendChild(text);
+  const newText = document.createElement("h1");
+  newText.appendChild(text);
+  return newText;
 }
 
 function appendComputerInput(text) {
-  display.appendChild(text);
+  const newText = document.createElement("h1");
+  newText.appendChild(text);
+  return newText;
 }
 
 /* end functions */
@@ -38,14 +43,3 @@ let computerCount = 0;
 
 const display = document.querySelector("#display");
 const computerChoice = computerRandomSelection();
-let userInput;
-const button = document.querySelectorAll("button");
-
-button.forEach((button) => {
-  button.addEventListener("click", () => {
-    userInput = button.id;
-    return userInput;
-  });
-});
-
-appendUserInput(userInput);
