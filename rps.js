@@ -14,6 +14,7 @@ function addToCount(currentValue) {
   currentCount++;
   return currentCount;
 }
+
 /* sets new score after each game */
 function setScore(score) {
   newScore = score++;
@@ -40,6 +41,3 @@ let userCount = 0;
 let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
-
-const display = document.querySelector("#display");
-const computerChoice = computerRandomSelection();
