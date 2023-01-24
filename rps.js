@@ -11,6 +11,12 @@ function updateScore(score) {
   return newScore;
 }
 
+function playRound(userInput, computerInput) {
+  userSelection = userInput;
+  computerSelection = computerInput;
+  
+}
+
 /* end functions */
 
 /* Rock paper scissors game */
