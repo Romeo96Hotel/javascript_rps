@@ -5,17 +5,6 @@ function computerChoice() {
   return random;
 }
 
-/* returns user input */
-function Userinput() {
-  const button = document.querySelectorAll("button");
-
-  button.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      return button.innerHTML;
-    });
-  });
-}
-
 /* sets new score after each game */
 function updateScore(score) {
   newScore = score++;
@@ -32,3 +21,14 @@ let newComputerCount = 0;
 let computerCount = 0;
 
 const display = document.querySelector("#display");
+const buttons = document.querySelectorAll("button");
+const userSelection = document.createElement("h1");
+const computerDisplay = document.createElement("h1");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    userSelection.innerHTML = button.innerHTML;
+    display.appendChild(userSelection);
+    return userSelection;
+  });
+});
