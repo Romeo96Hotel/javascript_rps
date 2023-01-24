@@ -5,30 +5,30 @@ function computerChoice() {
   return random;
 }
 
-/* sets new score after each game */
-function updateScore(score) {
-  newScore = score++;
-  return newScore;
-}
-
 /* plays a round of rock paper scissors and returns winner */
-function roundWinner(verifiedInput, computerChoice) {
-  const userInput = verifiedInput;
+function roundWinner(userInput, computerChoice) {
+  const userSelection = userInput;
   const computerInput = computerChoice;
   let winner;
 
-  if (userInput === "rock" && computerInput === "scissors") {
+  if (userSelection === "rock" && computerInput === "scissors") {
     winner = 1;
-  } else if (userInput === "paper" && computerInput === "rock") {
+  } else if (userSelection === "paper" && computerInput === "rock") {
     winner = 1;
-  } else if (userInput === "scissors" && computerInput === "paper") {
+  } else if (userSelection === "scissors" && computerInput === "paper") {
     winner = 1;
-  } else if (userInput === computerInput) {
+  } else if (userSelection === computerInput) {
     winner = 2;
   } else {
     winner = 3;
   }
   return winner;
+}
+
+/* sets new score after each game */
+function updateScore(score) {
+  newScore = score++;
+  return newScore;
 }
 
 /* end functions */
@@ -39,16 +39,3 @@ let userCount = 0;
 let newUserCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
-
-const display = document.querySelector("#display");
-const buttons = document.querySelectorAll("button");
-const userSelection = document.createElement("h1");
-const computerDisplay = document.createElement("h1");
-
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    userSelection.innerHTML = button.innerHTML;
-    display.appendChild(userSelection);
-    return userSelection;
-  });
-});
