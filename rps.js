@@ -8,17 +8,12 @@ let computerCount = 0;
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("button");
 
-/* returns button clicked by user */
-function getUserInput() {
-  let userInput;
-
-  for (const button of buttons) {
-    button.addEventListener("click", () => {
-      userInput = button.innerHTML;
-      return userInput;
-    });
-  }
-}
+buttons.forEach(button => {
+  button.addEventListener("click", (e) => {
+    userInput = e.innerHTML;
+    
+  });
+});
 
 /* returns value of random index in array */
 function getCompChoice() {
