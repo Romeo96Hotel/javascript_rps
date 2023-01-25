@@ -9,10 +9,11 @@ const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("button");
 
 /* returns button clicked by user */
-function getButtonValue() {
+function rpsGame() {
   for (const button of buttons) {
-    button.addEventListener("click");
-    return button.innerHTML;
+    button.addEventListener("click", () => {
+      
+    });
   }
 }
 
