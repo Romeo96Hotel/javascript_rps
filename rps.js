@@ -1,11 +1,11 @@
 let playerCount = 0;
 let computerCount = 0;
-let totalCount;
-const playerDisplay = document.querySelector("#player");
-const computerdisplay = document.querySelector("#computer");
-const scoreDisplay = document.querySelector("#score");
-const winnerDisplay = document.querySelector("#winner");
 const buttons = document.querySelectorAll("button");
+const display = document.querySelector("#display");
+const playerDisplay = document.createElement("h1");
+const computerDisplay = document.createElement("h1");
+const scoreDisplay = document.createElement("h1");
+const winnerDisplay = document.createElement("h1");
 
 /* Rock paper scissors game */
 buttons.forEach((button) => {
@@ -14,13 +14,22 @@ buttons.forEach((button) => {
     const computerInput = getCompChoice();
     const winner = getWinner(playerInput, computerInput);
 
-    display.
+    playerDisplay.textContent = `Player chooses: ${playerInput}!`;
+    computerDisplay.textContent = `Computer chooses: ${computerInput}!`;
+    display.appendChild(playerDisplay);
+    display.appendChild(computerDisplay);
 
     if (winner === "player") playerCount++;
     if (winner === "computer") computerCount++;
 
-    if (playerCount === 5) console.log("player wins");
-    if (computerCount === 5) console.log("computer wins");
+    scoreDisplay.textContent = `Player Score: 
+    ${playerCount} Computer Score: ${computerCount}`;
+    display.appendChild(scoreDisplay);
+
+    if (playerCount === 5) winnerDisplay.textContent = "You win!";
+    if (computerCount === 5) winnerDisplay.textContent = "You lose!";
+
+    display.appendChild(winnerDisplay);
   });
 });
 
