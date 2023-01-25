@@ -1,3 +1,21 @@
+/* User input */
+/* Rock paper scissors game */
+
+let userCount = 0;
+let newUserCount = 0;
+let newComputerCount = 0;
+let computerCount = 0;
+const display = document.querySelector("#display");
+const buttons = document.querySelectorAll("button");
+
+/* returns button clicked by user */
+function getButtonValue() {
+  for (const button of buttons) {
+    button.addEventListener("click");
+    return button.innerHTML;
+  }
+}
+
 /* returns value of random index in array */
 function computerChoice() {
   const choices = ["rock", "paper", "scissors"];
@@ -32,10 +50,3 @@ function updateScore(score) {
 }
 
 /* end functions */
-
-/* Rock paper scissors game */
-
-let userCount = 0;
-let newUserCount = 0;
-let newComputerCount = 0;
-let computerCount = 0;
