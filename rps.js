@@ -1,120 +1,61 @@
-/* checks if user input is valid*/
-function verifyUserInput(userInput) {
-  userchoice = userInput.toLowerCase();
+let playerCount = 0;
+let computerCount = 0;
+const buttons = document.querySelectorAll("button");
+const display = document.querySelector("#display");
+const playerDisplay = document.createElement("h1");
+const computerDisplay = document.createElement("h1");
+const scoreDisplay = document.createElement("h1");
+const winnerDisplay = document.createElement("h1");
 
-  switch (userchoice) {
-    case "rock":
-      isValid = true;
-      break;
-    case "scissors":
-      isValid = true;
-      break;
-    case "paper":
-      isValid = true;
-      break;
-    default:
-      isValid = false;
-      break;
-  }
-  return isValid;
-}
-/* takes in both verified user input and computer input and returns respective number value for round winner */
-function roundWinner(verifiedInput, computerRandomSelection) {
-  const userInput = verifiedInput;
-  const computerInput = computerRandomSelection;
-  let winner;
+/* Rock paper scissors game */
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const playerInput = button.textContent;
+    const computerInput = getCompChoice();
+    const winner = getWinner(playerInput, computerInput);
 
-  if (userInput === "rock" && computerInput === "scissors") {
-    winner = 1;
-  } else if (userInput === "paper" && computerInput === "rock") {
-    winner = 1;
-  } else if (userInput === "scissors" && computerInput === "paper") {
-    winner = 1;
-  } else if (userInput === computerInput) {
-    winner = 2;
-  } else {
-    winner = 3;
-  }
-  return winner;
-}
+    playerDisplay.textContent = `Player chooses: ${playerInput}!`;
+    computerDisplay.textContent = `Computer chooses: ${computerInput}!`;
+    display.appendChild(playerDisplay);
+    display.appendChild(computerDisplay);
+
+    if (winner === "player") playerCount++;
+    if (winner === "computer") computerCount++;
+
+    scoreDisplay.textContent = `Player Score: 
+    ${playerCount} Computer Score: ${computerCount}`;
+    display.appendChild(scoreDisplay);
+
+    if (playerCount === 5) winnerDisplay.textContent = "You win!";
+    if (computerCount === 5) winnerDisplay.textContent = "You lose!";
+
+    display.appendChild(winnerDisplay);
+  });
+});
 
 /* returns value of random index in array */
-function computerRandomSelection() {
+function getCompChoice() {
   const choices = ["rock", "paper", "scissors"];
   const random = choices[Math.floor(Math.random() * choices.length)];
   return random;
 }
-/* increments the counter */
-function addToCount(currentValue) {
-  let currentCount = currentValue;
 
-  currentCount++;
+/* plays a round of rock paper scissors and returns winner */
+function getWinner(playerInput, computerChoice) {
+  const playerSelection = playerInput;
+  const computerInput = computerChoice;
+  let winner;
 
-  return currentCount;
-}
-
-function setScore(score) {
-  newScore = score++;
-}
-/* end functions */
-
-/* Rock paper scissors game */
-
-let userCount = 0;
-let newUserCount = 0;
-let newComputerCount = 0;
-let computerCount = 0;
-
-/* runs game 3 times */
-for (let i = 0; i < 5; i++) {
-  const computerChoice = computerRandomSelection();
-  const userInput = prompt("rock, paper, or scissors?... ");
-  const verifiedInput = verifyUserInput(userInput);
-  const winner = roundWinner(userInput, computerChoice);
-
-  /* if input is valid */
-  if (verifiedInput) {
-    console.log("user chooses " + userInput);
-    console.log("computer chooses " + computerChoice);
-    /* if player wins */
-    if (winner === 1) {
-      newUserCount = addToCount(userCount);
-      console.log("Player wins!");
-      /* if its a draw */
-    } else if (winner === 2) {
-      newUserCount = addToCount(userCount);
-      newComputerCount = addToCount(computerCount);
-      console.log("draw!");
-      /* computer wins */
-    } else {
-      newComputerCount = addToCount(computerCount);
-      console.log("computer wins!");
-    }
-    /* if input is not valid.. */
+  if (playerSelection === "rock" && computerInput === "scissors") {
+    winner = "player";
+  } else if (playerSelection === "paper" && computerInput === "rock") {
+    winner = "player";
+  } else if (playerSelection === "scissors" && computerInput === "paper") {
+    winner = "player";
+  } else if (playerSelection === computerInput) {
+    winner = "tie";
   } else {
-    console.log("user chooses " + userInput + " Invalid input");
+    winner = "computer";
   }
-
-  console.log(
-    "Player score: " +
-      newUserCount +
-      " / " +
-      "Computer score: " +
-      newComputerCount
-  );
-  /* set starting counts to the new count's value for new round*/
-  userCount = newUserCount;
-  computerCount = newComputerCount;
-}
-
-/* compares computer score to user score at the end of the game */
-if (computerCount > userCount) {
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("Computer wins the game!");
-} else if (userCount > computerCount) {
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("User wins the game!");
-} else {
-  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-  console.log("Draw! both players win... NOTHING!");
+  return winner;
 }
