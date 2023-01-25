@@ -1,6 +1,6 @@
 let playerCount = 0;
 let computerCount = 0;
-let totalCount = 0;
+let totalCount;
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("button");
 
@@ -16,8 +16,7 @@ buttons.forEach((button) => {
     } else if (winner === "computer") {
       computerCount++;
     }
-
-    console.log(playerCount);
+    totalCount = "Player: ${playerCount} Computer: ${computerCount}.";
   });
 });
 
