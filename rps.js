@@ -9,23 +9,26 @@ const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("button");
 
 /* returns button clicked by user */
-function rpsGame() {
+function getUserInput() {
+  let userInput;
+
   for (const button of buttons) {
     button.addEventListener("click", () => {
-      
+      userInput = button.innerHTML;
+      return userInput;
     });
   }
 }
 
 /* returns value of random index in array */
-function computerChoice() {
+function getCompChoice() {
   const choices = ["rock", "paper", "scissors"];
   const random = choices[Math.floor(Math.random() * choices.length)];
   return random;
 }
 
 /* plays a round of rock paper scissors and returns winner */
-function roundWinner(userInput, computerChoice) {
+function getWinner(userInput, computerChoice) {
   const userSelection = userInput;
   const computerInput = computerChoice;
   let winner;
