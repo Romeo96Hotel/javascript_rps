@@ -7,7 +7,7 @@ const buttons = document.querySelectorAll("button");
 /* Rock paper scissors game */
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    const playerInput = button.innerHTML;
+    const playerInput = button.textContent;
     const computerInput = getCompChoice();
     const winner = getWinner(playerInput, computerInput);
 
@@ -16,6 +16,8 @@ buttons.forEach((button) => {
     } else if (winner === "computer") {
       computerCount++;
     }
+
+    console.log(playerCount);
   });
 });
 
@@ -45,5 +47,3 @@ function getWinner(playerInput, computerChoice) {
   }
   return winner;
 }
-
-/* end functions */
