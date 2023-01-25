@@ -1,7 +1,10 @@
 let playerCount = 0;
 let computerCount = 0;
 let totalCount;
-const display = document.querySelector("#display");
+const playerDisplay = document.querySelector("#player");
+const computerdisplay = document.querySelector("#computer");
+const scoreDisplay = document.querySelector("#score");
+const winnerDisplay = document.querySelector("#winner");
 const buttons = document.querySelectorAll("button");
 
 /* Rock paper scissors game */
@@ -11,12 +14,13 @@ buttons.forEach((button) => {
     const computerInput = getCompChoice();
     const winner = getWinner(playerInput, computerInput);
 
-    if (winner === "player") {
-      playerCount++;
-    } else if (winner === "computer") {
-      computerCount++;
-    }
-    totalCount = "Player: ${playerCount} Computer: ${computerCount}.";
+    display.
+
+    if (winner === "player") playerCount++;
+    if (winner === "computer") computerCount++;
+
+    if (playerCount === 5) console.log("player wins");
+    if (computerCount === 5) console.log("computer wins");
   });
 });
 
@@ -40,7 +44,7 @@ function getWinner(playerInput, computerChoice) {
   } else if (playerSelection === "scissors" && computerInput === "paper") {
     winner = "player";
   } else if (playerSelection === computerInput) {
-    winner = undefined;
+    winner = "tie";
   } else {
     winner = "computer";
   }
