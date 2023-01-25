@@ -1,17 +1,19 @@
-/* User input */
-/* Rock paper scissors game */
-
-let userCount = 0;
-let newUserCount = 0;
+let playerCount = 0;
+let newplayerCount = 0;
+let totalCount = 0;
 let newComputerCount = 0;
 let computerCount = 0;
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("button");
 
-buttons.forEach(button => {
-  button.addEventListener("click", (e) => {
-    userInput = e.innerHTML;
-    
+/* Rock paper scissors game */
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const playerInput = button.innerHTML;
+    const computerInput = getCompChoice();
+    const winner = getWinner(playerInput, computerInput);
+
+    console.log(winner);
   });
 });
 
@@ -23,18 +25,18 @@ function getCompChoice() {
 }
 
 /* plays a round of rock paper scissors and returns winner */
-function getWinner(userInput, computerChoice) {
-  const userSelection = userInput;
+function getWinner(playerInput, computerChoice) {
+  const playerSelection = playerInput;
   const computerInput = computerChoice;
   let winner;
 
-  if (userSelection === "rock" && computerInput === "scissors") {
+  if (playerSelection === "rock" && computerInput === "scissors") {
     winner = 1;
-  } else if (userSelection === "paper" && computerInput === "rock") {
+  } else if (playerSelection === "paper" && computerInput === "rock") {
     winner = 1;
-  } else if (userSelection === "scissors" && computerInput === "paper") {
+  } else if (playerSelection === "scissors" && computerInput === "paper") {
     winner = 1;
-  } else if (userSelection === computerInput) {
+  } else if (playerSelection === computerInput) {
     winner = 2;
   } else {
     winner = 3;
@@ -43,9 +45,6 @@ function getWinner(userInput, computerChoice) {
 }
 
 /* sets new score after each game */
-function updateScore(score) {
-  newScore = score++;
-  return newScore;
-}
+function updateScore(winner) {}
 
 /* end functions */
