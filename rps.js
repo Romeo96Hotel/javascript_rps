@@ -1,8 +1,6 @@
 let playerCount = 0;
-let newplayerCount = 0;
-let totalCount = 0;
-let newComputerCount = 0;
 let computerCount = 0;
+let totalCount = 0;
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("button");
 
@@ -13,7 +11,11 @@ buttons.forEach((button) => {
     const computerInput = getCompChoice();
     const winner = getWinner(playerInput, computerInput);
 
-    console.log(winner);
+    if (winner === "player") {
+      playerCount++;
+    } else if (winner === "computer") {
+      computerCount++;
+    }
   });
 });
 
@@ -31,20 +33,17 @@ function getWinner(playerInput, computerChoice) {
   let winner;
 
   if (playerSelection === "rock" && computerInput === "scissors") {
-    winner = 1;
+    winner = "player";
   } else if (playerSelection === "paper" && computerInput === "rock") {
-    winner = 1;
+    winner = "player";
   } else if (playerSelection === "scissors" && computerInput === "paper") {
-    winner = 1;
+    winner = "player";
   } else if (playerSelection === computerInput) {
-    winner = 2;
+    winner = undefined;
   } else {
-    winner = 3;
+    winner = "computer";
   }
   return winner;
 }
-
-/* sets new score after each game */
-function updateScore(winner) {}
 
 /* end functions */
