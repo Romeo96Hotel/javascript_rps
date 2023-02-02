@@ -1,61 +1,60 @@
-let playerCount = 0;
-let computerCount = 0;
-const buttons = document.querySelectorAll("button");
-const display = document.querySelector("#display");
-const playerDisplay = document.createElement("h1");
-const computerDisplay = document.createElement("h1");
-const scoreDisplay = document.createElement("h1");
-const winnerDisplay = document.createElement("h1");
+/* 
+TODO:
+rainbow functionality
+color selection functionality
+size grid functionality */
+class Grid {
+  constructor(container) {
+    this._container = container;
+    this.clear();
+  }
 
-/* Rock paper scissors game */
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const playerInput = button.textContent;
-    const computerInput = getCompChoice();
-    const winner = getWinner(playerInput, computerInput);
+  /* Clears grid of color */
+  clear() {
+    this._container.textContent = "";
+  }
 
-    playerDisplay.textContent = `Player chooses: ${playerInput}!`;
-    computerDisplay.textContent = `Computer chooses: ${computerInput}!`;
-    display.appendChild(playerDisplay);
-    display.appendChild(computerDisplay);
+  /* Creates the grid to specified size */
+  createGrid(number) {
+    this._container.style.display = "grid";
+    this._container.style.gridTemplateColumns = `repeat(${number}, minmax(auto,auto))`;
+    this._container.style.gridTemplateRows = `repeat(${number}, minmax(auto,auto))`;
+    this._container.style.height = "500px";
+  }
 
-    if (winner === "player") playerCount++;
-    if (winner === "computer") computerCount++;
+  /* If container does not have children nodes */
+  /* Appends a grid square to the container */
+  /* grid square changes color on hover */
+  appendGrid(number, color) {
+    const area = number * number;
 
-    scoreDisplay.textContent = `Player Score: 
-    ${playerCount} Computer Score: ${computerCount}`;
-    display.appendChild(scoreDisplay);
+    if (!this._container.hasChildNodes()) {
+      for (let i = 0; i < area; i++) {
+        const gridSquare = document.createElement("div");
+        gridSquare.addEventListener("mouseover", () => {
+          gridSquare.style.backgroundColor = color;
+        });
+        this._container.appendChild(gridSquare);
+      }
+    } else {
+      this.clear();
+    }
+  }
+}
 
-    if (playerCount === 5) winnerDisplay.textContent = "You win!";
-    if (computerCount === 5) winnerDisplay.textContent = "You lose!";
+const container = document.querySelector("#container");
+const standardBtn = document.querySelector("#standard");
+const rainbowBtn = document.querySelector("#rainbow");
+const clearBtn = document.querySelector("#clear");
+const standardGrid = new Grid(container);
 
-    display.appendChild(winnerDisplay);
-  });
+/* creates grid with standard color change*/
+standardBtn.addEventListener("click", () => {
+  standardGrid.createGrid(10);
+  standardGrid.appendGrid(10, "red");
 });
 
-/* returns value of random index in array */
-function getCompChoice() {
-  const choices = ["rock", "paper", "scissors"];
-  const random = choices[Math.floor(Math.random() * choices.length)];
-  return random;
-}
-
-/* plays a round of rock paper scissors and returns winner */
-function getWinner(playerInput, computerChoice) {
-  const playerSelection = playerInput;
-  const computerInput = computerChoice;
-  let winner;
-
-  if (playerSelection === "rock" && computerInput === "scissors") {
-    winner = "player";
-  } else if (playerSelection === "paper" && computerInput === "rock") {
-    winner = "player";
-  } else if (playerSelection === "scissors" && computerInput === "paper") {
-    winner = "player";
-  } else if (playerSelection === computerInput) {
-    winner = "tie";
-  } else {
-    winner = "computer";
-  }
-  return winner;
-}
+/* clears grid */
+clearBtn.addEventListener("click", () => {
+  standardGrid.clear();
+});
