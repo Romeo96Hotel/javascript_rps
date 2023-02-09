@@ -8,21 +8,6 @@
 */
 
 class Round {
-  constructor(buttons) {
-    this.buttons = [...buttons];
-    this.playerDisplay = playerDisplay;
-    this.computerDisplay = computerDisplay;
-    this.winnerDisplay = winnerDisplay;
-  }
-
-  isClicked() {
-    this.buttons.map((x) =>
-      x.addEventListener("click", () => {
-        return x.value;
-      })
-    );
-  }
-
   getCompChoice() {
     const choices = ["rock", "paper", "scissors"];
     return choices[Math.floor(Math.random() * choices.length)];
@@ -59,7 +44,7 @@ class Display {
     return (container.textContent = value);
   }
 
-  displayWinner() {
+  displayWinner(getWinner) {
     getWinner === "tie"
       ? this.appendText(this.winnerDisplay, "TIE GAME!")
       : getWinner === "player"
@@ -76,7 +61,17 @@ const computerDisplay = document.querySelector("#computer-display");
 const winnerDisplay = document.querySelector("#winner-display");
 
 /* initilize game */
-const rpsGame = new Round(buttons);
+[...buttons].map((x) =>
+  x.addEventListener("click", () => {
+    const rpsGame = new Round(buttons);
+    const display = new Display(playerDisplay, computerDisplay, winnerDisplay);
 
-const userInput = rpsGame.isClicked();
-const computerInput = rpsGame.getCompChoice();
+    const playerInput = x.value;
+    const computerInput = rpsGame.getCompChoice();
+    const winner = rpsGame.getWinner(playerInput, computerInput);
+
+    display.appendText(playerDisplay, playerInput);
+    display.appendText(computerDisplay, computerInput);
+    display.displayWinner(winner);
+  })
+);
