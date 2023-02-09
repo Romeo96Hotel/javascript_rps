@@ -8,42 +8,24 @@
 */
 
 class Round {
-  constructor(buttons, playerDisplay, computerDisplay, winnerDisplay) {
+  constructor(buttons) {
     this.buttons = [...buttons];
     this.playerDisplay = playerDisplay;
     this.computerDisplay = computerDisplay;
     this.winnerDisplay = winnerDisplay;
-
-    /* Initiate round */
-    this.isClicked();
   }
 
   isClicked() {
     this.buttons.map((x) =>
-      x.addEventListener("click", (c) => {
-        return true;
+      x.addEventListener("click", () => {
+        return x.value;
       })
     );
   }
 
   getCompChoice() {
     const choices = ["rock", "paper", "scissors"];
-    return (random =
-      choices[Math.floor(Math.random() * choices.length)].toLowerCase());
-  }
-
-  appendText(container, value) {
-    return (container.textContent = value);
-  }
-
-  displayWinner() {
-    getWinner === "tie"
-      ? this.appendText(this.winnerDisplay, "TIE GAME!")
-      : getWinner === "player"
-      ? this.appendText(this.winnerDisplay, "YOU WIN!")
-      : getWinner === "computer"
-      ? this.appendText(this.winnerDisplay, "YOU LOSE!")
-      : undefined;
+    return choices[Math.floor(Math.random() * choices.length)];
   }
 
   getWinner(player, computer) {
@@ -66,17 +48,35 @@ class Round {
   }
 }
 
+class Display {
+  constructor(playerDisplay, computerDisplay, winnerDisplay) {
+    this.playerDisplay = playerDisplay;
+    this.computerDisplay = computerDisplay;
+    this.winnerDisplay = winnerDisplay;
+  }
+
+  appendText(container, value) {
+    return (container.textContent = value);
+  }
+
+  displayWinner() {
+    getWinner === "tie"
+      ? this.appendText(this.winnerDisplay, "TIE GAME!")
+      : getWinner === "player"
+      ? this.appendText(this.winnerDisplay, "YOU WIN!")
+      : getWinner === "computer"
+      ? this.appendText(this.winnerDisplay, "YOU LOSE!")
+      : undefined;
+  }
+}
+
 const buttons = document.querySelectorAll("input");
 const playerDisplay = document.querySelector("#player-display");
 const computerDisplay = document.querySelector("#computer-display");
 const winnerDisplay = document.querySelector("#winner-display");
 
 /* initilize game */
-const rpsGame = new Round(
-  buttons,
-  playerDisplay,
-  computerDisplay,
-  winnerDisplay
-);
+const rpsGame = new Round(buttons);
 
-rpsGame.isClicked();
+const userInput = rpsGame.isClicked();
+const computerInput = rpsGame.getCompChoice();
