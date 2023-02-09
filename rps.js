@@ -1,61 +1,77 @@
-let playerCount = 0;
-let computerCount = 0;
-const buttons = document.querySelectorAll("button");
-const display = document.querySelector("#display");
-const playerDisplay = document.createElement("h1");
-const computerDisplay = document.createElement("h1");
-const scoreDisplay = document.createElement("h1");
-const winnerDisplay = document.createElement("h1");
+/*
+1) User clicks rock paper or scissors button
+2) computer chooses rock paper scissors
+3) compare choices
+3) display computer choice
+4) display user choice
+5) display winner
+*/
 
-/* Rock paper scissors game */
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const playerInput = button.textContent;
-    const computerInput = getCompChoice();
-    const winner = getWinner(playerInput, computerInput);
-
-    playerDisplay.textContent = `Player chooses: ${playerInput}!`;
-    computerDisplay.textContent = `Computer chooses: ${computerInput}!`;
-    display.appendChild(playerDisplay);
-    display.appendChild(computerDisplay);
-
-    if (winner === "player") playerCount++;
-    if (winner === "computer") computerCount++;
-
-    scoreDisplay.textContent = `Player Score: 
-    ${playerCount} Computer Score: ${computerCount}`;
-    display.appendChild(scoreDisplay);
-
-    if (playerCount === 5) winnerDisplay.textContent = "You win!";
-    if (computerCount === 5) winnerDisplay.textContent = "You lose!";
-
-    display.appendChild(winnerDisplay);
-  });
-});
-
-/* returns value of random index in array */
-function getCompChoice() {
-  const choices = ["rock", "paper", "scissors"];
-  const random = choices[Math.floor(Math.random() * choices.length)];
-  return random;
-}
-
-/* plays a round of rock paper scissors and returns winner */
-function getWinner(playerInput, computerChoice) {
-  const playerSelection = playerInput;
-  const computerInput = computerChoice;
-  let winner;
-
-  if (playerSelection === "rock" && computerInput === "scissors") {
-    winner = "player";
-  } else if (playerSelection === "paper" && computerInput === "rock") {
-    winner = "player";
-  } else if (playerSelection === "scissors" && computerInput === "paper") {
-    winner = "player";
-  } else if (playerSelection === computerInput) {
-    winner = "tie";
-  } else {
-    winner = "computer";
+class Round {
+  getCompChoice() {
+    const choices = ["rock", "paper", "scissors"];
+    return choices[Math.floor(Math.random() * choices.length)];
   }
-  return winner;
+
+  getWinner(player, computer) {
+    const rock = "rock";
+    const paper = "paper";
+    const scissors = "scissors";
+    let winner;
+    if (player === rock && computer === scissors) {
+      winner = "player";
+    } else if (player === paper && computer === rock) {
+      winner = "player";
+    } else if (player === scissors && computer === paper) {
+      winner = "player";
+    } else if (player === computer) {
+      winner = "tie";
+    } else {
+      winner = "computer";
+    }
+    return winner;
+  }
 }
+
+class Display {
+  constructor(playerDisplay, computerDisplay, winnerDisplay) {
+    this.playerDisplay = playerDisplay;
+    this.computerDisplay = computerDisplay;
+    this.winnerDisplay = winnerDisplay;
+  }
+
+  appendText(container, value) {
+    return (container.textContent = value);
+  }
+
+  displayWinner(getWinner) {
+    getWinner === "tie"
+      ? this.appendText(this.winnerDisplay, "TIE GAME!")
+      : getWinner === "player"
+      ? this.appendText(this.winnerDisplay, "YOU WIN!")
+      : getWinner === "computer"
+      ? this.appendText(this.winnerDisplay, "YOU LOSE!")
+      : undefined;
+  }
+}
+
+const buttons = document.querySelectorAll("input");
+const playerDisplay = document.querySelector("#player-display");
+const computerDisplay = document.querySelector("#computer-display");
+const winnerDisplay = document.querySelector("#winner-display");
+
+/* initilize game */
+[...buttons].map((x) =>
+  x.addEventListener("click", () => {
+    const rpsGame = new Round(buttons);
+    const display = new Display(playerDisplay, computerDisplay, winnerDisplay);
+
+    const playerInput = x.value;
+    const computerInput = rpsGame.getCompChoice();
+    const winner = rpsGame.getWinner(playerInput, computerInput);
+
+    display.appendText(playerDisplay, playerInput);
+    display.appendText(computerDisplay, computerInput);
+    display.displayWinner(winner);
+  })
+);
