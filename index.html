@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="rps.js" defer></script>
   </head>
   <body>
     <button data-type="rock" id="rock">rock</button>
@@ -15,4 +14,11 @@
     <div id="player-display"></div>
     <div id="winner-display"></div>
   </body>
+  <script>
+    const buttons = document.querySelectorAll("button");
+    const display = document.querySelector("#computer-display");
+    const playerDisplay = document.querySelector("#player-display");
+    const winnerDisplay = document.querySelector("#winner-display");
+  </script>
+  <script src="rps.js" defer></script>
 </html>

@@ -6,10 +6,6 @@
 4) display user choice
 5) display winner
 */
-const buttons = document.querySelectorAll("button");
-const display = document.querySelector("#computer-display");
-const playerDisplay = document.querySelector("#player-display");
-const winnerDisplay = document.querySelector("#winner-display");
 
 const COMPARE = {
   /* gets user input */
@@ -43,7 +39,9 @@ const COMPARE = {
 };
 
 const DISPLAY = {
-  displayPlayerChoice() {},
+  displayPlayerChoice() {
+
+  },
 
   displayComputerChoice() {},
 
